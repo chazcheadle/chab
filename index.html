@@ -1,6 +1,7 @@
 <html>
 <head>
 <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,700' rel='stylesheet' type='text/css'>
+  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <style>
 body {
   background-color: #ccc;
@@ -31,79 +32,106 @@ body {
   border-left: solid 1px #fff;
   border-right: solid 1px #fff;
   margin: 30px 50px;
-  padding: 10px;
-  color: rgba(255,255,255,.75);
+  padding:  0px 10px;
+  color: #ddd;
+  color: rgba(255,255,255,.90);
 }
 #header  {
   width: 100%;
+  overflow: auto;
 }
 #display-uleft {
-//  position: relative;
-//  top: 10px;
-//  left: 0px;
   padding-left: 10px;
+  float: left;
+  width: 45%;
 }
 #display-mleft {
-//  position: relative;
-//  top: 40px;
   left: 0px;
   padding: 30px 10px;
+  clear: both;
+  overflow: auto;
+  width: 50%;
 }
 #display-bleft {
-//  position: relative;
-//  bottom 20px;
   left: 0px;
+  bottom: 0px;
   padding-left: 10px;
+}
+#display-uright {
+  padding-right: 10px;
+  float: right;
+  display: inline;
+  width: 45%;
 }
 #display-mright {
   position: absolute;
   top: 100px;
   right: 0px;
   padding-right: 10px;
+  clear: both;
+  width: 50%;
 }
+#display-mright .info {
+  float: right;
+}
+#display-mleft .info {
+  float: left;
+}
+
+
 .info {
   left: 0px;
-//  position: relative;
-  padding-bottom: 15px;
-  margin-bottom: 10px;
-  color: #fff;
   width: 140px;
   clear: both;
-  height: 30px;
+  overflow: auto;
+  padding-bottom: 30px;
 }
 .info-left {
-//  width: 75px;
   float: left;
 }
 .info-right {
   background-color: #000;
   width: 40px;
   float: right;
-  border: solid 1px #444;
   height: 40px;
+  z-index: 10;
 }
-.calendar .label {
-  font-size: 1.3em;
-//  border: solid 1px #444;
+#day .label {
+  font-size: 1em;
 }
-.calendar .value {
-  font-size: 2.6em;
+#day .value {
+  background-color: #ddd;
+  background-color: rgba(255,255,255,.90);
+  font-size: 2em;
   color: #000;
-  background-color: #fff;
-  line-height: .8em;
+  line-height: 1em;
   font-weight: 700;
   text-align: right;
   padding: 5px;
+  width: 130px;
+}
+
+#time .value {
+  float: right;
+}
+#time .label {
+  float: right;
 }
 .data .label {
-  font-size: .9em;
-  line-height: .6em;
+  font-size: .7em;
 }
 .data .value {
   font-size: 2em;
+  line-height: .8em;
 }
-#day  {
-  width: 130px;
+.data-pie {
+  padding-top: 4px;
+}
+#day {
+//  width: 130px;
+}
+#date {
+  width: 100%;
 }
 #calendar  {
 }
@@ -113,14 +141,18 @@ body {
 }
 #humidity {
 }
-#location-env {
+
+.location-env {
+  font-size: .7em;
   border-top: solid 1px #888;
+  clear: both;
 }
 #location-env .label {
   text-align: right;
 }
+
 #location {
-  font-size: 2.6em;
+  font-size: 2em;
   display: inline;
   clear: both;
 }
@@ -138,12 +170,17 @@ body {
   <div id="picture"></div>
   <div id="overlay">
     <div id="header">
-    <div id="display-uleft">
-      <div id="day" class="calendar">
-        <div class="label">MISSION DAY</div>
-        <div class="value">48</div>
+      <div id="display-uleft">
+        <div id="day" class="calendar">
+          <div class="label">MISSION DATE</div>
+          <div class="value">FEB 18</div>
+        </div>
       </div>
-    </div>
+      <div id="display-uright">
+        <div id="time" class="calendar">
+          <div class="label">TIME: 17:44</div>
+        </div>
+      </div>
     </div>
     <div id="display-mleft">
       <div id="temp" class="info data">
@@ -151,61 +188,116 @@ body {
           <div class="label">TEMP</div>
           <div class="value">21.25</div>
         </div>
-        <div class="info-right"></div>
-      </div>
-      <div id="pressure" class="info data">
-        <div class="info-left">
-          <div class="label">PRESSURE</div>
-          <div class="value">13.32</div>
+        <div class="info-right">
+          <div id="temp-data" class="data-pie"></div>
         </div>
-        <div class="info-right"></div>
+        <div class="info-right">
+          <div id="temp-data" class="data-pie"></div>
+        </div>
       </div>
       <div id="humidity" class="info data">
         <div class="info-left">
           <div class="label">HUMIDITY</div>
           <div class="value">20.39</div>
         </div>
-        <div class="info-right"></div>
+        <div class="info-right">
+          <div id="temp-data" class="data-pie"></div>
+        </div>
       </div>
-     <div id="location-env" class="info location">
+      <div id="location-interior" class="info location-env">
         <div class="label">INTERIOR</div>
       </div>
     </div>
     <div id="display-bleft">
       <div id="location" class="info data">
-        <div class="facility">HAB > </div>
+        <div class="facility">HAB &gt; </div>
         <div class="room">KITCHEN</div>
       </div>
     </div>
     <div id="display-mright">
-      <div id="temp" class="info data">
+      <div id="ext-temp" class="info data">
         <div class="info-left">
           <div class="label">TEMP</div>
           <div class="value">11.29</div>
         </div>
-        <div class="info-right"></div>
+        <div class="info-right">
+          <div id="temp-data" class="data-pie"></div>
+        </div>
       </div>
-      <div id="pressure" class="info data">
+      <div id="ext-pressure" class="info data">
         <div class="info-left">
           <div class="label">PRESSURE</div>
           <div class="value">13.33</div>
         </div>
-        <div class="info-right"></div>
+        <div class="info-right">
+          <div id="temp-data" class="data-pie"></div>
+        </div>
       </div>
-      <div id="pressure" class="info data">
+      <div id="ext-windspeed" class="info data">
         <div class="info-left">
           <div class="label">WIND SPEED</div>
           <div class="value">4.24</div>
         </div>
-        <div class="info-right"></div>
+        <div class="info-right">
+          <div id="temp-data" class="data-pie"></div>
         </div>
-        <div id="location-env" class="info location">
-          <div class="label">EXTERIOR</div>
-        </div>
+      </div>
+      <div id="location-exterior" class="info location-env">
+        <div class="label">EXTERIOR</div>
       </div>
     </div>
   </div>
 </div>
+<script>
+  var width = 40,
+      height = 40,
+      radius = Math.min(width, height) / 2;
+  var dataset = [21.33, 78.77];
+  var color = d3.scale.ordinal()
+    .range(["rgba(255,255,255,.8)", "rgba(255,255,255,.3)"]);
+
+  var svg1 = d3.selectAll('#temp-data')
+    .append('svg')
+    .attr('width', width)
+    .attr('height', height)
+    .append('g')
+    .attr('transform', 'translate(' + (width / 2) + ',' + (height / 2) + ')');
+
+  var arc = d3.svg.arc()
+    .outerRadius(radius)
+    .innerRadius(radius - 6);
+
+  var pie = d3.layout.pie()
+    .padAngle(.02)
+    .sort(null);
+
+  var arcs = svg1.selectAll('g.arc')
+    .data(pie(dataset))
+    .enter()
+    .append('g')
+    .attr('class', 'slice');
+
+  arcs.append("path")
+    .attr('d', arc)
+    .attr('fill', function(d, i) {
+      console.log(d);
+      return color(d.data);
+    })
+    .attr('id', function(d, i) { return 'slice-' + i;});
+
+  svg1.append("text")
+    .text('%')
+    .attr('y', 5)
+    .attr("text-anchor", "middle")
+    .style('fill', 'rgba(255,255,255,.50)');
+
+  svg1.append("circle")
+    .attr('cx', 0)
+    .attr('cy', 0)
+    .attr('r', 12)
+    .style('fill', 'rgba(255,255,255,.3)');
+
+</script>
 </body>
 
 </html>
