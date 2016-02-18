@@ -34,11 +34,17 @@ body {
   margin: 30px 50px;
   padding:  0px 10px;
   color: #ddd;
-  color: rgba(255,255,255,.90);
+  color: rgba(255,255,255,.80);
 }
-#header  {
+#header {
   width: 100%;
   overflow: auto;
+}
+#footer {
+  width: 100%;
+  position: absolute;
+  overflow: auto;
+  bottom: 0px;
 }
 #display-uleft {
   padding-left: 10px;
@@ -47,7 +53,7 @@ body {
 }
 #display-mleft {
   left: 0px;
-  padding: 30px 10px;
+  padding: 55px 0 0 10px;
   clear: both;
   overflow: auto;
   width: 50%;
@@ -56,9 +62,10 @@ body {
   left: 0px;
   bottom: 0px;
   padding-left: 10px;
+  width: 100%;
 }
 #display-uright {
-  padding-right: 10px;
+  padding-right: 20px;
   float: right;
   display: inline;
   width: 45%;
@@ -67,7 +74,7 @@ body {
   position: absolute;
   top: 100px;
   right: 0px;
-  padding-right: 10px;
+  padding-right: 20px;
   clear: both;
   width: 50%;
 }
@@ -84,7 +91,7 @@ body {
   width: 140px;
   clear: both;
   overflow: auto;
-  padding-bottom: 30px;
+  padding-bottom: 10px;
 }
 .info-left {
   float: left;
@@ -185,7 +192,7 @@ body {
     <div id="display-mleft">
       <div id="temp" class="info data">
         <div class="info-left">
-          <div class="label">TEMP</div>
+          <div class="label">TEMPERATURE</div>
           <div class="value">21.25</div>
         </div>
         <div class="info-right">
@@ -194,7 +201,7 @@ body {
       </div>
       <div id="pressure" class="info data">
         <div class="info-left">
-          <div class="label">TEMP</div>
+          <div class="label">PRESSURE</div>
           <div class="value">21.25</div>
         </div>
         <div class="info-right">
@@ -215,15 +222,21 @@ body {
       </div>
     </div>
     <div id="display-bleft">
-      <div id="location" class="info data">
-        <div class="facility">HAB &gt; </div>
-        <div class="room">KITCHEN</div>
+      <div id="footer">
+        <div id="location" class="data">
+          <div class="facility">HAB &gt; </div>
+          <div class="room">&nbsp;KITCHEN</div>
+          </div>
+          <div id="connection" class="data">
+          <div id="label">CONNECTION: AJDG7353DJDG27352
+          </div>
+        </div>
       </div>
     </div>
     <div id="display-mright">
       <div id="ext-temp" class="info data">
         <div class="info-left">
-          <div class="label">TEMP</div>
+          <div class="label">TEMPERATURE</div>
           <div class="value">11.29</div>
         </div>
         <div class="info-right">
