@@ -23,16 +23,23 @@ body {
   position: absolute;
   width: 960px;
   height: 480px;
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    -ms-transform: scaleX(-1);
+    transform: scaleX(-1);
+    -ms-filter: "FlipH";
+    filter: FlipH;
 }
 #overlay {
   width: 860px;
   height: 420px;
   position: relative;
-  border-left: solid 1px #fff;
-  border-right: solid 1px #fff;
+  border-left: solid 1px rgba(240,250,255,.8);
+  border-right: solid 1px rgba(240,250,255,.8);
   margin: 30px 50px;
   color: #ddd;
-  color: rgba(255,255,255,.80);
+  color: rgba(240,250,255,.60);
 }
 #header {
   width: 100%;
@@ -64,7 +71,7 @@ body {
   width: 100%;
 }
 #display-uright {
-  padding-right: 20px;
+  padding-right: 10px;
   float: right;
   display: inline;
   margin-top: -5px;
@@ -74,7 +81,7 @@ body {
   position: absolute;
   top: 100px;
   right: 0px;
-  padding-right: 20px;
+  padding-right: 10px;
   clear: both;
   width: 50%;
 }
@@ -84,7 +91,6 @@ body {
 #display-mleft .info {
   float: left;
 }
-
 
 .info {
   left: 0px;
@@ -103,27 +109,37 @@ body {
   height: 40px;
   z-index: 10;
 }
-#day .label {
-  font-size: 1em;
+#day .label,
+#time .label {
+  font-size: 1.4em;
 }
-#day .value {
+#time {
+  text-align: right;
+}
+#day {
+  text-align: left;
+}
+  
+#day .value,
+#time .value {
   background-color: #ddd;
-  background-color: rgba(255,255,255,.90);
+  background-color: rgba(240,250,255,.30);
   font-size: 2em;
   color: #000;
+  color: rgba(240,250,255,.8);
   line-height: 1em;
   font-weight: 700;
-  text-align: right;
   padding: 0px 5px;
   width: 130px;
 }
 
 #time .value {
-  float: right;
+//  float: right;
 }
 #time .label {
-  float: right;
+//  float: right;
 }
+
 .data .label {
   font-size: .7em;
 }
@@ -139,6 +155,9 @@ body {
 }
 #date {
   width: 100%;
+}
+#time {
+  float: right;
 }
 #calendar  {
 }
@@ -160,6 +179,8 @@ body {
 
 #location {
   font-size: 2em;
+  color: #f0f8ff;
+  color: rgba(240,250,255,.8);
   display: inline;
   clear: both;
 }
@@ -179,13 +200,18 @@ body {
     <div id="header">
       <div id="display-uleft">
         <div id="day" class="calendar">
-          <div class="label">MISSION DATE</div>
+          <div class="label">
+            <strong>MISSION DATE</strong>
+          </div>
           <div class="value">FEB 18</div>
         </div>
       </div>
       <div id="display-uright">
         <div id="time" class="calendar">
-          <div class="label">TIME: 17:44</div>
+          <div class="label">
+            <strong>TIME</strong>
+          </div>
+          <div class="value">17:44</div>
         </div>
       </div>
     </div>
@@ -273,7 +299,7 @@ body {
       radius = Math.min(width, height) / 2;
   var dataset = [21.33, 78.77];
   var color = d3.scale.ordinal()
-    .range(["rgba(255,255,255,.8)", "rgba(255,255,255,.3)"]);
+    .range(["rgba(240,250,255,.9)", "rgba(240,250,255,.3)"]);
 
   var svg1 = d3.selectAll('#temp-data')
     .append('svg')
@@ -284,7 +310,7 @@ body {
 
   var arc = d3.svg.arc()
     .outerRadius(radius)
-    .innerRadius(radius - 6);
+    .innerRadius(radius - 5);
 
   var pie = d3.layout.pie()
     .padAngle(.02)
@@ -308,13 +334,13 @@ body {
     .text('%')
     .attr('y', 5)
     .attr("text-anchor", "middle")
-    .style('fill', 'rgba(255,255,255,.50)');
+    .style('fill', 'rgba(240,250,255,.50)');
 
   svg1.append("circle")
     .attr('cx', 0)
     .attr('cy', 0)
     .attr('r', 12)
-    .style('fill', 'rgba(255,255,255,.3)');
+    .style('fill', 'rgba(240,250,255,.3)');
 
 </script>
 </body>
