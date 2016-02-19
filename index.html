@@ -13,17 +13,16 @@ body {
 #content {
   position: absolute;
   width: 100%;
-  height: 480px;
+//  height: 480px;
 }
 
 #picture {
-  background-color: #000;
+//  background-color: #000;
+  background-image: url('IMG_20150418_120031513_HDR.jpg');
+  background-size: 960px 480px;
   position: absolute;
   width: 960px;
   height: 480px;
-  top: 10px;
-  left: 10px;
-
 }
 #overlay {
   width: 860px;
@@ -32,24 +31,24 @@ body {
   border-left: solid 1px #fff;
   border-right: solid 1px #fff;
   margin: 30px 50px;
-  padding:  0px 10px;
   color: #ddd;
   color: rgba(255,255,255,.80);
 }
 #header {
   width: 100%;
-  overflow: auto;
+  overflow: hidden;
 }
 #footer {
   width: 100%;
   position: absolute;
-  overflow: auto;
+  overflow: hidden;
   bottom: 0px;
 }
 #display-uleft {
   padding-left: 10px;
   float: left;
   width: 45%;
+  margin-top: -5px;
 }
 #display-mleft {
   left: 0px;
@@ -68,6 +67,7 @@ body {
   padding-right: 20px;
   float: right;
   display: inline;
+  margin-top: -5px;
   width: 45%;
 }
 #display-mright {
@@ -90,14 +90,14 @@ body {
   left: 0px;
   width: 140px;
   clear: both;
-  overflow: auto;
+  overflow: hidden;
   padding-bottom: 10px;
 }
 .info-left {
   float: left;
 }
 .info-right {
-  background-color: #000;
+  background-color: none;
   width: 40px;
   float: right;
   height: 40px;
@@ -114,7 +114,7 @@ body {
   line-height: 1em;
   font-weight: 700;
   text-align: right;
-  padding: 5px;
+  padding: 0px 5px;
   width: 130px;
 }
 
@@ -221,8 +221,8 @@ body {
         <div class="label">INTERIOR</div>
       </div>
     </div>
-    <div id="display-bleft">
-      <div id="footer">
+    <div id="footer">
+      <div id="display-bleft">
         <div id="location" class="data">
           <div class="facility">HAB &gt; </div>
           <div class="room">&nbsp;KITCHEN</div>
