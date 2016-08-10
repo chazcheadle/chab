@@ -36,10 +36,10 @@ The nodes provide WiFi connectivity to publish data to the Mosquitto server.
 - [Adafruit ESP8266](https://www.adafruit.com/products/2471) + [BME280](https://www.adafruit.com/products/2652) (barometer, temperature, humidity) [code](https://gist.github.com/chazcheadle/c1d047b0315befbf1472)
 
 TODO:
-Sass
-Responsive layout
-User-configurableoverlay components
-Spellcheck
-User authentication
-Image/stream prefetching
+- Sass
+- Responsive layout
+- User-configurableoverlay components
+- Spellcheck
+- User authentication
+- Image/stream prefetching
 
