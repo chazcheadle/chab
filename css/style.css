@@ -1,0 +1,195 @@
+// TODO: Make better.
+
+body {
+  background-color: #ccc;
+  padding: 0;
+  margin: 0;
+  font-family: 'Titillium Web', sans-serif;
+  color: #fff;
+}
+#content {
+  position: absolute;
+  width: 100%;
+}
+
+#picture {
+  background-color: #333;
+  background-size: 960px 480px;
+  position: absolute;
+  width: 960px;
+  height: 480px;
+}
+#picture img {
+  width: 960px;
+  height: 480px;
+}
+
+#overlay {
+  width: 860px;
+  height: 420px;
+  position: relative;
+  border-left: solid 1px rgba(240,250,255,.9);
+  border-right: solid 1px rgba(240,250,255,.9);
+  margin: 30px 50px;
+  color: #ddd;
+  color: rgba(240,250,255,.9);
+}
+#header {
+  width: 100%;
+  overflow: hidden;
+}
+#footer {
+  width: 100%;
+  position: absolute;
+  overflow: hidden;
+  bottom: 0px;
+}
+#display-uleft {
+  padding-left: 10px;
+  float: left;
+  width: 45%;
+  margin-top: -5px;
+}
+#display-mleft {
+  left: 0px;
+  padding: 55px 0 0 10px;
+  clear: both;
+  overflow: auto;
+  width: 50%;
+}
+#display-bleft {
+  left: 0px;
+  bottom: 0px;
+  padding-left: 10px;
+  width: 100%;
+}
+#display-uright {
+  padding-right: 10px;
+  float: right;
+  display: inline;
+  margin-top: -5px;
+  width: 45%;
+}
+#display-mright {
+  position: absolute;
+  top: 100px;
+  right: 0px;
+  padding-right: 10px;
+  clear: both;
+  width: 50%;
+}
+#display-mright .info {
+  float: right;
+}
+#display-mleft .info {
+  float: left;
+}
+
+.info {
+  left: 0px;
+  width: 145px;
+  clear: both;
+  overflow: hidden;
+  padding-bottom: 10px;
+}
+.info-left {
+  float: left;
+  padding-right: 8px;
+}
+.info-right {
+  background-color: none;
+  width: 48px;
+  float: right;
+  height: 48px;
+  z-index: 10;
+}
+#day .label,
+#time .label {
+  font-size: 1.4em;
+}
+#time {
+  text-align: right;
+}
+#day {
+  text-align: left;
+}
+
+#day .value,
+#time .value {
+  background-color: #ddd;
+  background-color: rgba(240,250,255,.4);
+  font-size: 2em;
+  color: #000;
+  color: rgba(240,250,255,.9);
+  line-height: 1em;
+  font-weight: 700;
+  padding: 0px 5px;
+  width: 130px;
+}
+
+#time .value {
+//  float: right;
+}
+#time .label {
+//  float: right;
+}
+
+.data .label {
+  font-size: .7em;
+}
+.data .value {
+  font-size: 2em;
+  line-height: .8em;
+}
+.data-pie {
+}
+#day {
+//  width: 130px;
+}
+#date {
+  width: 100%;
+}
+#time {
+  float: right;
+}
+#calendar  {
+}
+#temp {
+}
+#pressure {
+}
+#pressure-data {
+  font-size: .75em;
+}
+#humidity {
+}
+
+#connection .value {
+  font-size: .7em;
+  float: left;
+}
+
+.location-env {
+  font-size: .7em;
+  border-top: solid 1px #888;
+  border-top: solid 1px rgba(255,255,255,.9);
+  clear: both;
+}
+#location-env .label {
+  text-align: right;
+}
+
+#location {
+  font-size: 2em;
+  color: #f0f8ff;
+  color: rgba(240,250,255,.9);
+  display: inline;
+  clear: both;
+}
+#location .facility {
+  font-weight: 700;
+  float: left;
+}
+#location .facility-zone {
+
+}
